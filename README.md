@@ -32,9 +32,9 @@ http://127.0.0.1:8081/
 ### phpRedisAdmin
 http://127.0.0.1:83/
 
-## Development
-   Note: if your project lives at - ***/var/www/news***
-   - Create Smarty cache and templates_c folders
+## Smarty Installation
+Note: if your project lives at - ***/var/www/news***
+   - Create Smarty "cache" and "templates_c" folders
      * `mkdir -p /var/www/news/app/smarty/templates/`
      * `mkdir -p /var/www/news/app/smarty/templates_c/ `
      * `mkdir -p /var/www/news/app/smarty/cache/ `
