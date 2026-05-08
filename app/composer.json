@@ -1,0 +1,20 @@
+{
+    "name": "orestphp/news",
+    "require": {
+        "smarty/smarty": "^5.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Application\\": "application/"
+        },
+        "files": [
+            "application/globals.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Orest Lozynsky",
+            "email": "orest.b2b@gmail.com"
+        }
+    ]
+}

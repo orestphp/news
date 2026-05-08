@@ -10,6 +10,7 @@ ENV MYSQL_DATABASE=${MYSQL_DATABASE} \
   MYSQL_PASSWORD=${MYSQL_PASSWORD} \
   MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
 
+
 # CHANGE THIS LINE: Point to the full path from the project root
 COPY docker/mysql/my.cnf /etc/mysql/conf.d/my.cnf
 
@@ -22,6 +23,9 @@ RUN chmod 755 /etc/mysql/conf.d/my.cnf && \
 RUN mkdir -p /var/log/mysql && \
     touch /var/log/mysql/error.log && \
     chown -R mysql:mysql /var/log/mysql
+
+COPY docker/mysql/init.sql /docker-entrypoint-initdb.d/init.sql
+COPY docker/mysql/seeds.sql /docker-entrypoint-initdb.d/seeds.sql
 
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
     CMD mysqladmin ping -h localhost -u root -p"$MYSQL_ROOT_PASSWORD"

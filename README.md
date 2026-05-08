@@ -2,8 +2,10 @@
 
 ## Technologies Used
 
-   - FROM mariadb:10.6.8
+   - FROM mysql:8.0
+   - FROM phpMyAdmin
    - FROM redis:alpine
+   - FROM phpRedisAdmin  
    - FROM php:8.2-fpm
    - FROM nginx:1.18-alpine
    - xdebug 2
@@ -23,7 +25,7 @@ http://127.0.0.1:8080/
 
 ### phpmyadmin
 http://127.0.0.1:8081/
-   - `db
+   - `db`
    - `root`
    - `root`
 
@@ -31,7 +33,15 @@ http://127.0.0.1:8081/
 http://127.0.0.1:83/
 
 ## Development
-
+   Note: if your project lives at - ***/var/www/news***
+   - Create Smarty cache and templates_c folders
+     * `mkdir -p /var/www/news/app/smarty/templates/`
+     * `mkdir -p /var/www/news/app/smarty/templates_c/ `
+     * `mkdir -p /var/www/news/app/smarty/cache/ `
+     * `mkdir -p /var/www/news/app/smarty/configs/`
+   - To use Smarty in docker container:
+     * `docker exec -it news-app-1 chown -R www-data:www-data /var/www/news/app/smarty/templates_c/`
+     * `docker exec -it news-app-1 chown -R www-data:www-data /var/www/news/app/smarty/cache/`
 
 ## Command Glossary
    - `make init`
@@ -41,3 +51,6 @@ http://127.0.0.1:83/
    - `docker ps` - list all running containers
    - `docker exec -it <NAME> sh` - Enter container
    - `docker logs -f <container_id>` - see incomming logs for container
+   - Swow tree Directory/Files in container: 
+     ``` $ find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'```
+
