@@ -1,5 +1,5 @@
 -- 1.
-CREATE TABLE `categories` (
+CREATE TABLE `category` (
                               `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                               `name` VARCHAR(100) NOT NULL,
                               `description` TEXT,
@@ -7,7 +7,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 2.
-CREATE TABLE `articles` (
+CREATE TABLE `article` (
                             `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                             `name` VARCHAR(255) NOT NULL,
                             `image` VARCHAR(255) DEFAULT NULL,

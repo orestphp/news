@@ -21,12 +21,14 @@
         <span>News {$name})</span>
     </div>
     <div class="menu">
-
+        <span class="home"><a href="{URL}/main/task">News Today</a></span>
+        <span class="alt"><a href="{URL}/main/task">The Task</a></span>
+        <span class="alt"><a href="{URL}/main/contacts">Contacts</a></span>
     </div>
 
     <div class="main_nav">
         <div class="sub_menu">
-            <div>Menu</div>
+            <div>Categories</div>
             <a href="{URL}/main/task">The Task</a>
             <a href="{URL}/main/contact">Contact</a>
         </div>
