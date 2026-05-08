@@ -47,7 +47,7 @@ http://127.0.0.1:83/
    - `make init`
    - `make down`
    - `make up`
-   - `make dev`
+   - `make restart`
    - `docker ps` - list all running containers
    - `docker exec -it <NAME> sh` - Enter container
    - `docker logs -f <container_id>` - see incomming logs for container

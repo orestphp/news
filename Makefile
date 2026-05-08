@@ -1,9 +1,6 @@
 up:
 	docker-compose up -d
 
-build:
-	docker-compose up -d --build
-
 down:
 	docker-compose down
 
@@ -14,5 +11,3 @@ restart:
 init:
 	docker-compose up -d --build
 	docker-compose down
-dev:
-	docker-compose up
