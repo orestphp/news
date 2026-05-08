@@ -47,7 +47,7 @@ Note: if your project lives at - ***/var/www/news***
    - `make init`
    - `make down`
    - `make up`
-   - `make restart`
+   - `make restart` - rebuild and start containers
    - `docker ps` - list all running containers
    - `docker exec -it <NAME> sh` - Enter container
    - `docker logs -f <container_id>` - see incomming logs for container
