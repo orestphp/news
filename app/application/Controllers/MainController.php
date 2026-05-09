@@ -5,6 +5,7 @@ namespace Application\Controllers;
 use Application\Core\Controller;
 use Application\Core\View;
 use Application\Core\Model;
+use Application\Models\ArticlesModel;
 
 /**
  * MainController Class
@@ -22,7 +23,9 @@ class MainController extends Controller
     }
 
     public function actionIndex()
-	{	
+	{
+        $articles = ArticlesModel::getAllArticles();
+        $this->view->assign('articles', $articles);
 		$this->view->render('main');
 	}
 

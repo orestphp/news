@@ -13,11 +13,11 @@ class View
 	// Default view template
 	public string $layoutPath = __DIR__ . '/../Views/layout/templateView.php';
 	
-	function render($contentView, $vars = [])
+	function render($contentView, $data = [])
 	{
 		// Convert array elements to variables
-		if(is_array($vars)) {
-			extract($vars);
+		if(is_array($data)) {
+			extract($data);
 		}
 
         // Smarty
@@ -36,17 +36,17 @@ class View
         $smarty->registerPlugin("function", "td", "td");
 
         // Pass Variables
-        $smarty->assign('vars', $vars, true);
+        $smarty->assign('data', $data, true);
         $smarty->assign('name', 'Today', true);
 
         // Display Template
         $smarty->display($contentView . '.tpl');
 
         /**
-         * NOTE: to test $vars, copy-past in template
+         * NOTE: to test $data, copy-past in template
          *
         <pre>
-            {tt vars=$vars}
+            {tt data=$data}
         </pre>
 
          */

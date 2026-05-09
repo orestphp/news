@@ -23,12 +23,12 @@ class SimpleMapper
 
 	public static function initialize()
 	{
-		if (!isset(static ::$table)) 
+		if (!isset(static::$table))
 		{
-			static ::$table = substr(get_called_class() , strrpos(get_called_class() , '\\') + 1);
+			static::$table = substr(get_called_class() , strrpos(get_called_class() , '\\') + 1);
 		}
 
-		self::$params[static ::$table] = array();
+		self::$params[static::$table] = array();
 
 		foreach(get_class_vars(get_called_class()) as $key => $value)
 		{
@@ -40,21 +40,21 @@ class SimpleMapper
 				'pk'
 			))) 
 			{
-				self::$params[static ::$table][$key] = $value;
+				self::$params[static::$table][$key] = $value;
 			}
 		}	
 	}
 
 	public static function get($id)
 	{
-		return static ::query('SELECT ' . static ::$columns . ' FROM ' . static ::$table . ' WHERE ' . static ::$pk . ' = :id', array(
+		return static ::query('SELECT ' . static::$columns . ' FROM ' . static::$table . ' WHERE ' . static ::$pk . ' = :id', array(
 			'id' => $id
 		))->fetch();
 	}
 
 	public static function where($where, $params)
 	{
-		return static ::query('SELECT ' . static ::$columns . ' FROM ' . static ::$table . ' WHERE ' . $where, $params);
+		return static ::query('SELECT ' . static::$columns . ' FROM ' . static::$table . ' WHERE ' . $where, $params);
 	}
 
 	public static function query($sql, $params)
@@ -65,7 +65,7 @@ class SimpleMapper
 		return $query;
 	}
 
-	public static function execute($sql, $params)
+	public static function execute($sql, $params = [])
 	{
 		$query = self::$pdo->prepare($sql);
 		$query->execute($params);
@@ -87,22 +87,22 @@ class SimpleMapper
 
 		foreach ($tempParams as $key => $value) 
 		{
-			$paramsTemp[$key.'_value'] = $this->$key;
-			$sets .= $key.' = :'.$key.'_value, ';
+			$paramsTemp[$key . '_value'] = $this->$key;
+			$sets .= $key . ' = :' . $key . '_value, ';
 		}
 
 		$sets = substr($sets, 0, -2);
 
 		if (isset($this->{static::$pk})) 
 		{
-			$sql = "UPDATE ".static::$table." SET $sets WHERE ".static::$pk." = :".static::$pk."_value";
+			$sql = "UPDATE ". static::$table ." SET $sets WHERE ". static::$pk ." = :". static::$pk ."_value";
 			static::execute($sql, $paramsTemp);
 		} 
 		else 
 		{
 			$fields = implode(', ', array_keys($tempParams));
 			$values = ':'.implode('_value, :', array_keys($tempParams)).'_value';
-			$sql = "INSERT INTO ".static::$table." ($fields) VALUES ($values)";
+			$sql = "INSERT INTO " . static::$table . " ($fields) VALUES ($values)";
 			static::execute($sql, $paramsTemp);
 			$this->{static::$pk} = self::$pdo->lastInsertId();
 		}
@@ -110,8 +110,8 @@ class SimpleMapper
 	
 	public function delete() 
 	{
-		return static::execute('DELETE FROM '.static::$table.' WHERE '.static::$pk.' = :id', array(
-			'id'=>$this->{static::$pk}
+		return static::execute('DELETE FROM '. static::$table .' WHERE '. static::$pk .' = :id', array(
+			'id' => $this->{static::$pk}
 		));
 	}
 }

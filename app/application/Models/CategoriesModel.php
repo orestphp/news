@@ -5,13 +5,13 @@ namespace Application\Models;
 use Application\Core\Model;
 
 /**
- * CategoryModel Class
+ * CategoriesModel Class
  */
 
-class CategoryModel extends Model
+class CategoriesModel extends Model
 {
 
-	public static $table = "category";
+	public static $table = "categories";
 
 	public int $id;
 	public string $name;
