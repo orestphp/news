@@ -12,8 +12,9 @@ class View
 {
 	// Default view template
 	public string $layoutPath = __DIR__ . '/../Views/layout/templateView.php';
-	
-	function render($contentView, $data = [])
+
+	// Pass data to the view
+	function render($contentView, $data = [], $pages = [])
 	{
 		// Convert array elements to variables
 		if(is_array($data)) {
@@ -21,8 +22,6 @@ class View
 		}
 
         // Smarty
-
-        // Layout views
         require_once __DIR__ . '/../../vendor/smarty/smarty/libs/Smarty.class.php';
         $smarty = new Smarty();
         $layoutPath = realpath(__DIR__ . '/../smarty/');
@@ -31,13 +30,12 @@ class View
         $smarty->setCacheDir($layoutPath . '/cache/');
         $smarty->setConfigDir($layoutPath . '/configs/');
 
-        // Pass Functions
+        // Pass global Functions
         $smarty->registerPlugin("function", "tt", "tt");
         $smarty->registerPlugin("function", "td", "td");
 
         // Pass Variables
         $smarty->assign('data', $data, true);
-        $smarty->assign('name', 'Today', true);
 
         // Display Template
         $smarty->display($contentView . '.tpl');

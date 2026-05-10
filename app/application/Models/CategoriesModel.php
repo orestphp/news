@@ -3,6 +3,7 @@
 namespace Application\Models;
 
 use Application\Core\Model;
+use PDO;
 
 /**
  * CategoriesModel Class
@@ -16,9 +17,13 @@ class CategoriesModel extends Model
 	public int $id;
 	public string $name;
 
-	public function getData()
-	{	
+	public static function getCategories() : array
+	{
+        $sql = "SELECT * FROM categories ORDER BY created_at";
 
+        $categories = static::$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+        return $categories;
 	}
 
 }

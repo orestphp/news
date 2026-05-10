@@ -8,7 +8,7 @@
 
     <title>
         {block name=title}
-            {if isset($name)} News {$name} {else} $name not found. {/if}
+            News Today
         {/block}
     </title>
     {block name=head}{/block}
@@ -17,21 +17,24 @@
 {block name=body}
 
 <div class="container">
+
     <div class="header">
-        <span>News {$name})</span>
+        <span>News Today :)</span>
     </div>
-    <div class="menu">
-        <span class="home"><a href="{URL}/main/task">News Today</a></span>
+
+    <div class="menu_1">
+        <span class="home"><a href="{URL}">News Today</a></span>
         <span class="alt"><a href="{URL}/main/task">The Task</a></span>
         <span class="alt"><a href="{URL}/main/contacts">Contacts</a></span>
     </div>
 
-    <div class="main_nav">
-        <div class="sub_menu">
-            <div>Categories</div>
-            <a href="{URL}/main/task">The Task</a>
-            <a href="{URL}/main/contact">Contact</a>
-        </div>
+    <div class="menu_2">
+            <div class="category-all-topics">Все темы: </div>
+            {foreach $data.categories as $cat}
+                <span class="category-badge">
+                    <a class="category_link" href="">{$cat.name}</a>
+                </span>
+            {/foreach}
     </div>
 
     <div class="content">
@@ -39,9 +42,8 @@
             {* Sub-templates *}
         {/block}
     </div>
-</div>
 
-<br>
+</div>
 
 {/block}
 

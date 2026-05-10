@@ -17,31 +17,35 @@ abstract class Route
 		$controllerName = 'Main';
 		$actionName = 'Index';
 
-		$routes = explode('/', $_SERVER['REQUEST_URI']);
+		$validURI = explode('/', $_SERVER['REQUEST_URI']);
+        $routes = (strpos('?', $_SERVER['REQUEST_URI'])) ?
+            explode('/', $validURI[0])
+        :
+            explode('/', $_SERVER['REQUEST_URI']);
 
 		// Controller
-		if ( !empty($routes[1]) )
+		if ( !empty($routes[1]) && !str_contains('?', $routes[0]))
 		{	
 			$controllerName = $routes[1];
 		}
 		
 		// Action
-		if ( !empty($routes[2]) )
+		if ( isset($routes[2]) && !empty($routes[2]) && !str_contains('?', $routes[1]))
 		{
 			$actionName = $routes[2];
 		}
 
-		// MVC
-		$ModelClass      = 'Application\Core\Models\\' . ucfirst($controllerName . 'Model');
+        // MVC
+        $ModelClass      = 'Application\Core\Models\\' . ucfirst($controllerName . 'Model');
         $model = class_exists($ModelClass) ? new $ModelClass : new Model;
         $view = new View;
         $ControllerClass = 'Application\Controllers\\' . ucfirst($controllerName) . 'Controller';
 
+        // Controller action
         $actionName = 'action' . ucfirst($actionName);
 
         // Create controller
         $controller = new $ControllerClass($view, $model);
-		
 		if(method_exists($controller, $actionName))
 		{
 			// Call controller action
@@ -59,6 +63,8 @@ abstract class Route
         header('HTTP/1.1 404 Not Found');
 		header("Status: 404 Not Found");
 		header('Location:' . $host . '404');
+		echo "404: Page Not Found";
+		exit;
     }
 
 	static function inputPost($paramName = '')

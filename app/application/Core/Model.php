@@ -2,13 +2,13 @@
 
 namespace Application\Core;
 
-use Application\Core\SimpleMapper;
+use Application\Core\ActiveRecord;
 
 /**
  * Main Model Class
  */
 
-class Model extends SimpleMapper
+class Model extends ActiveRecord
 {
 
 	public static $table = "";

@@ -4,11 +4,11 @@ namespace Application\Core;
 use \PDO;
 
 /**
- * SimpleMapper Active Record
+ * Active Record
  * Lib ref: https://github.com/kenny1har/simple-php-activerecord
  */
 
-class SimpleMapper
+class ActiveRecord
 
 {
 	public static $table;

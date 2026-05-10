@@ -1,10 +1,10 @@
 <?php
 
 use Application\Core\Route;
-use Application\Core\SimpleMapper;
+use Application\Core\ActiveRecord;
 
 // Connect to DB
-SimpleMapper::$pdo = new \PDO(
+ActiveRecord::$pdo = new \PDO(
     'mysql:host=' . DB_HOST . 
     ';dbname=' . DB_NAME . 
     ';charset=utf8mb4',
