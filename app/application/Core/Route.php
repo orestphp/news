@@ -2,8 +2,7 @@
 
 namespace Application\Core;
 
-use Application\Core\View;
-use Application\Core\Model;
+use Application\Controllers\MainController;
 
 /**
  * Route Class
@@ -17,38 +16,31 @@ abstract class Route
 		$controllerName = 'Main';
 		$actionName = 'Index';
 
-		$validURI = explode('/', $_SERVER['REQUEST_URI']);
-        $routes = (strpos('?', $_SERVER['REQUEST_URI'])) ?
-            explode('/', $validURI[0])
-        :
-            explode('/', $_SERVER['REQUEST_URI']);
+        if (strpos($_SERVER['REQUEST_URI'], "?")) {
+            $dirtyRoutes = explode('?', $_SERVER['REQUEST_URI']);
+            $routes = explode('/', $dirtyRoutes[0]);
+        } else {
+            $routes = explode('/', $_SERVER['REQUEST_URI']);
+        }
 
-		// Controller
-		if ( !empty($routes[1]) && !str_contains('?', $routes[0]))
-		{	
-			$controllerName = $routes[1];
-		}
-		
-		// Action
-		if ( isset($routes[2]) && !empty($routes[2]) && !str_contains('?', $routes[1]))
-		{
-			$actionName = $routes[2];
-		}
+        /**
+         * http://URL/controller/action
+         */
+		// controller
+		$controllerName = !empty($routes[1]) ? $routes[1] : $controllerName;
+		// action
+        $actionName = !empty($routes[2]) ? 'action' . ucfirst($routes[2]) : 'action' . $actionName;
 
         // MVC
         $ModelClass      = 'Application\Core\Models\\' . ucfirst($controllerName . 'Model');
         $model = class_exists($ModelClass) ? new $ModelClass : new Model;
-        $view = new View;
         $ControllerClass = 'Application\Controllers\\' . ucfirst($controllerName) . 'Controller';
+        $controller = class_exists($ControllerClass) ? new $ControllerClass($model) : new MainController($model);
 
-        // Controller action
-        $actionName = 'action' . ucfirst($actionName);
-
-        // Create controller
-        $controller = new $ControllerClass($view, $model);
+        // Check action
 		if(method_exists($controller, $actionName))
 		{
-			// Call controller action
+			// Call controller & action
 			$controller->$actionName();
 		} else {
 			// Page Not Found

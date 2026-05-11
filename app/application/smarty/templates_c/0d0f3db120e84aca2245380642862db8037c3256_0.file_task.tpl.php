@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.8.0, created on 2026-05-10 04:32:35
+/* Smarty version 5.8.0, created on 2026-05-10 11:04:44
   from 'file:task.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.8.0',
-  'unifunc' => 'content_6a000a63b8d069_76489844',
+  'unifunc' => 'content_6a00664c5ad347_03681214',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0d0f3db120e84aca2245380642862db8037c3256' => 
     array (
       0 => 'task.tpl',
-      1 => 1778235914,
+      1 => 1778411082,
       2 => 'file',
     ),
   ),
@@ -20,26 +20,25 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6a000a63b8d069_76489844 (\Smarty\Template $_smarty_tpl) {
+function content_6a00664c5ad347_03681214 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
-
-
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_6956247496a000a63b89d01_22302452', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_6281798606a00664c5abc26_40549709', "content");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "index.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_6956247496a000a63b89d01_22302452 extends \Smarty\Runtime\Block
+class Block_6281798606a00664c5abc26_40549709 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
 ?>
 
 
+<div class="container-in-content">
 <h1> The Task </h1>
 
 Необходимо разработать простой, но полностью рабочий веб-сайт на чистом PHP (без фреймворков) с использованием MySQL и шаблонизатора Smarty. Сайт должен реализовывать функционал блога с категориями и постами.
@@ -213,6 +212,9 @@ $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
 
 <p>Docker-окружение</p>
 
+</div>
+
+    <br>
 <?php
 }
 }

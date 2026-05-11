@@ -16,12 +16,16 @@ use Application\Models\CategoriesModel;
 class MainController extends Controller
 {
     public Model $model;
-    public View $view;
 
-    public function __construct(View $view, Model $model)
+    // initialized in parent class
+    public View $view;
+    public array $categories;
+
+    public function __construct(Model $model)
     {
-        $this->view = $view;
         $this->model = $model;
+
+        parent::__construct();
     }
 
     public function actionIndex()
@@ -29,20 +33,22 @@ class MainController extends Controller
 	    // Page number
         $currentPage = (Route::inputGet('page')) ? (int) Route::inputGet('page') : 1;
 
-        // All categories
-        $categories = CategoriesModel::getCategories();
+        // All categories with articles
+        $categoriesAndArticles = CategoriesModel::getCategoriesWithArticles();
 
-        // All articles
-        $countArticles = (int) ArticlesModel::getCountArticles();
-        $articles = ArticlesModel::getArticles($currentPage);
+        // Count articles
+        //$countArticles = (int) ArticlesModel::getCountArticles();
+
+        // All $articles
+        // $articles = ArticlesModel::getAllArticles($currentPage);
 
 		$this->view->render('main',
             // $data
             [
-                'categories' => $categories,
-                'articles' => $articles,
+                //'categories' => $this->categories,
+                'categories' => $categoriesAndArticles,
                 'currentPage' => $currentPage,
-                'totalPages' => ceil($countArticles / ArticlesModel::$pageLimit)
+                'totalPages' => 1, //ceil($countArticles / ArticlesModel::$pageLimit)
             ]
 
         );
@@ -50,11 +56,21 @@ class MainController extends Controller
 
 	public function actionTask()
 	{
-		$this->view->render('task');
+		$this->view->render('task',
+            // $data
+            [
+                'categories' => $this->categories,
+            ]
+        );
 	}
 
 	public function actionContacts()
 	{
-		$this->view->render('contacts');
+		$this->view->render('contacts',
+            // $data
+            [
+                'categories' => $this->categories,
+            ]
+        );
 	}
 }

@@ -17,7 +17,7 @@ class CategoriesModel extends Model
 	public int $id;
 	public string $name;
 
-	public static function getCategories() : array
+	public static function getAllCategories() : array
 	{
         $sql = "SELECT * FROM categories ORDER BY created_at";
 
@@ -25,5 +25,35 @@ class CategoriesModel extends Model
 
         return $categories;
 	}
+
+    public static function getCategoriesWithArticles() : array
+    {
+        $sql = "SELECT c.*, 
+            (
+                SELECT JSON_ARRAYAGG(
+                    JSON_OBJECT(
+                        'id', a.id, 
+                        'name', a.name,
+                        'description', a.description,
+                        'image', a.image,
+                        'views_count', a.views_count,
+                        'created_at', a.created_at
+                    )
+                )
+                FROM article_to_category atc
+                JOIN articles a ON atc.article_id = a.id
+                WHERE atc.category_id = c.id
+            ) AS articles
+            FROM categories c
+            ORDER BY c.name ASC";
+
+        $categories = static::$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($categories as &$category) {
+            $category['articles'] = json_decode($category['articles'] ?? '[]', true);
+        }
+
+        return array_reverse($categories);
+    }
 
 }

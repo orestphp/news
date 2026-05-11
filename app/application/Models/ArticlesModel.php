@@ -25,7 +25,7 @@ class ArticlesModel extends Model
 
     static int $pageLimit = 10;
 
-	public static function getArticles(int $page = 1) : array
+	public static function getAllArticles(int $page = 1) : array
 	{
         $limit = static::$pageLimit;
         $offset = ($page - 1) * $limit;

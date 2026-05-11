@@ -34,7 +34,7 @@ class View
         $smarty->registerPlugin("function", "tt", "tt");
         $smarty->registerPlugin("function", "td", "td");
 
-        // Pass Variables
+        // Pass Variables to view
         $smarty->assign('data', $data, true);
 
         // Display Template
