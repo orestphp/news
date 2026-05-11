@@ -35,11 +35,12 @@ class NewsController extends Controller
         $currentPage = (Route::inputGet('page')) ? (int) Route::inputGet('page') : 1;
 
         //Count articles
-        $countArticles = (int) ArticlesModel::getCountArticles();
+        $countArticles = (int) ArticlesModel::countArticles();
 
         // All $articles
         $articles = ArticlesModel::getAllArticles($currentPage);
 
+        // Render
 		$this->view->render('articles',
             // $data
             [
@@ -48,7 +49,48 @@ class NewsController extends Controller
                 'currentPage' => $currentPage,
                 'totalPages' => ceil($countArticles / ArticlesModel::$pageLimit)
             ]
+        );
+	}
 
+	public function actionCategoryArticles(int $categoryId =  0)
+	{
+        // Page number
+        $currentPage = (Route::inputGet('page')) ? (int) Route::inputGet('page') : 1;
+
+        //Count articles
+        $countArticles = (int) ArticlesModel::countCategoryArticles($categoryId);
+
+        // All categories with articles
+        $categoryArticles = ArticlesModel::getCategoryArticles($categoryId);
+
+        // Render
+        $this->view->render('cat_articles',
+            // $data
+            [
+                'categories' => $this->categories,
+                'categoryArticles' => $categoryArticles,
+                'currentPage' => $currentPage,
+                'totalPages' => ceil($countArticles / ArticlesModel::$pageLimit)
+            ]
+        );
+	}
+
+	// Category articled
+	public function actionArticle(int $articleId =  null)
+	{
+	    // Page number
+        $currentPage = (Route::inputGet('page')) ? (int) Route::inputGet('page') : 1;
+
+        // Get article
+        $article = ArticlesModel::getArticle($articleId);
+
+        // Render
+		$this->view->render('articles',
+            // $data
+            [
+                'categories' => $this->categories,
+                'article' => $article,
+            ]
         );
 	}
 

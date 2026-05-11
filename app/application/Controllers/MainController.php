@@ -36,21 +36,14 @@ class MainController extends Controller
         // All categories with articles
         $categoriesAndArticles = CategoriesModel::getCategoriesWithArticles();
 
-        // Count articles
-        //$countArticles = (int) ArticlesModel::getCountArticles();
-
-        // All $articles
-        // $articles = ArticlesModel::getAllArticles($currentPage);
-
+        // Render
 		$this->view->render('main',
             // $data
             [
-                //'categories' => $this->categories,
                 'categories' => $categoriesAndArticles,
                 'currentPage' => $currentPage,
-                'totalPages' => 1, //ceil($countArticles / ArticlesModel::$pageLimit)
+                'totalPages' => 1,
             ]
-
         );
 	}
 

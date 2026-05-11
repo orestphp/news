@@ -75,8 +75,8 @@ div.content {
 /* Article */
 
 h4 {
-	margin-top: 10px !important;
-	margin-bottom: 10px !important;
+	margin-top: 15px !important;
+	margin-bottom: 15px !important;
 }
 
 .articles-grid {
@@ -84,18 +84,30 @@ h4 {
 	grid-template-columns: repeat(3, 1fr);
 	gap: 25px;
 	padding-left: 150px;
-	padding-bottom: 50px;
 	width: 800px;
 }
 
 div.article {
-	margin-bottom: 50px;
-	font-family: 'Monaco', arial;
+	margin-bottom: 30px;
 }
 
 div.article img {
 	border-radius: 8px;
 	width: 250px;
+}
+
+.article-date {
+	font-size: 12px;
+	color: #999;
+	margin-bottom: 15px;
+}
+
+.article-open {
+	padding-top: 20px;
+}
+
+.article-open a {
+	text-decoration: underline;
 }
 
 /* Categories */
@@ -243,7 +255,7 @@ span.alt a, span.home a:hover {
 	width: 100%;
 	display: flex;
 	justify-content: center;
-	padding: 20px 0;
+	padding: 20px 0 20px;
 	border-top: 1px solid #eee;
 }
 .pagination {

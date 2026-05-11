@@ -29,7 +29,16 @@ abstract class Route
 		// controller
 		$controllerName = !empty($routes[1]) ? $routes[1] : $controllerName;
 		// action
-        $actionName = !empty($routes[2]) ? 'action' . ucfirst($routes[2]) : 'action' . $actionName;
+        $actionName = !empty($routes[2]) ? ucfirst($routes[2]) : $actionName;
+        if(str_contains($actionName, '-')) {
+            $aActionName = explode('-', $actionName);
+            if(sizeof($aActionName) === 2)
+                $actionName = ucfirst($aActionName[0]) . ucfirst($aActionName[1]);
+        }
+        $actionName = 'action' . $actionName;
+
+        // model id
+        $modelId = !empty($routes[3]) ? $routes[3] : null;
 
         // MVC
         $ModelClass      = 'Application\Core\Models\\' . ucfirst($controllerName . 'Model');
@@ -41,7 +50,7 @@ abstract class Route
 		if(method_exists($controller, $actionName))
 		{
 			// Call controller & action
-			$controller->$actionName();
+			$controller->$actionName($modelId);
 		} else {
 			// Page Not Found
 			Route::errorPage404();

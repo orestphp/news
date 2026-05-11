@@ -33,7 +33,7 @@
             <div class="category-all-topics">Все темы: </div>
             {foreach $data.categories as $cat}
                 <span class="category-badge">
-                    <a class="category_link" href="">{$cat.name}</a>
+                    <a class="category_link" href="/news/category-articles/{$cat.id}">{$cat.name}</a>
                 </span>
             {/foreach}
         </div>

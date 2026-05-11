@@ -12,7 +12,17 @@ define("DB_PASS", "root");
 /******************************************************************************* 
 * HELPERS FOR TESTING 
 * @param mixed
-* @return Array 
+* @return Array
+ *
+ * Example:
+ *
+ * tt($var);
+ *
+ * or in template:
+ *
+<pre>
+{tt data=$data}
+</pre>
 *******************************************************************************/
 
 function tt()

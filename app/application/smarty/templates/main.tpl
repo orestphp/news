@@ -8,7 +8,7 @@
 				<div class="category-name">
 					<span>{$category.name}</span>
 					<div>
-						<a href="#">View all</a>
+						<a href="/news/category-articles/{$category.id}">View all</a>
 					</div>
 				</div>
 			</div>
@@ -21,12 +21,18 @@
 
 						<h4>{$article.name}</h4>
 
+						<div class="article-date">{$article.created_at|date_format}</div>
+
 						<div class="article-description">
-							{$article.description}
+							{{$article.content_text|truncate:150:"...":true}}
+						</div>
+
+						<div class="article-open">
+							<a href="/news/article/{$article.id}">Подробнее ...</a>
 						</div>
 
 						{if $article@iteration % 3 == 0}
-							<div style="display:block;clear: both;"></div>
+							{break}
 						{/if}
 					</div>
 				{/foreach}

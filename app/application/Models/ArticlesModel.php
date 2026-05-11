@@ -20,8 +20,8 @@ class ArticlesModel extends Model
     protected string $content_text;
     protected int $views_count;
 
-    protected string $date_created;
-    protected string $date_update;
+    protected string $created_at;
+    protected string $updated_at;
 
     static int $pageLimit = 10;
 
@@ -60,11 +60,51 @@ class ArticlesModel extends Model
         return $articles;
 	}
 
-	static function getCountArticles()
+	// Get all articles (for testing pagination)
+	static function countArticles()
     {
         $query = static::$pdo->prepare('SELECT COUNT(*) FROM articles');
         $query->execute();
         return $query->fetchColumn();
     }
 
+    // Count Category articles
+	static function countCategoryArticles(int $categoryId)
+    {
+        $query = static::$pdo->prepare('SELECT 
+                a.*
+                FROM articles a
+                JOIN article_to_category atc ON a.id = atc.article_id
+                WHERE atc.category_id =' . $categoryId);
+        $query->execute();
+        return $query->fetchColumn();
+    }
+
+    public static function getCategoryArticles(int $categoryId, int $page = 1) : array
+    {
+        $limit = static::$pageLimit;
+        $offset = ($page - 1) * $limit;
+
+        $sql = "SELECT 
+                    c.id AS category_id, 
+                    c.name AS category_name, 
+                    a.id, 
+                    a.name, 
+                    a.image,
+                    a.description,
+                    a.content_text,
+                    a.created_at
+                FROM categories c
+                INNER JOIN article_to_category atc ON c.id = atc.category_id
+                INNER JOIN articles a ON atc.article_id = a.id
+                WHERE c.id = ". $categoryId ."
+                ORDER BY a.created_at DESC
+                LIMIT ". $limit ." OFFSET ". $offset;
+
+
+        $query = static::$pdo->query($sql);
+        $categoryArticles = $query->fetchAll(static::$pdo::FETCH_ASSOC);
+
+        return $categoryArticles;
+    }
 }
