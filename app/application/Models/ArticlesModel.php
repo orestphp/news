@@ -88,26 +88,44 @@ class ArticlesModel extends Model
         return $query->fetchColumn();
     }
 
-    public static function getCategoryArticles(int $categoryId, int $page = 1) : array
+    public static function getCategoryArticles(mixed $categoryId, int $page = 1) : array
     {
         $limit = static::$pageLimit;
         $offset = ($page - 1) * $limit;
 
-        $sql = "SELECT 
-                    c.id AS category_id, 
-                    c.name AS category_name, 
-                    a.id, 
-                    a.name, 
-                    a.image,
-                    a.description,
-                    a.content_text,
-                    a.created_at
-                FROM categories c
-                INNER JOIN article_to_category atc ON c.id = atc.category_id
-                INNER JOIN articles a ON atc.article_id = a.id
-                WHERE c.id = ". $categoryId ."
-                ORDER BY a.created_at DESC
-                LIMIT ". $limit ." OFFSET ". $offset;
+        if(is_array($categoryId)) {
+            $sql = "SELECT 
+                        c.id AS category_id, 
+                        c.name AS category_name, 
+                        a.id, 
+                        a.name, 
+                        a.image,
+                        a.description,
+                        a.content_text,
+                        a.created_at
+                    FROM categories c
+                    INNER JOIN article_to_category atc ON c.id = atc.category_id
+                    INNER JOIN articles a ON atc.article_id = a.id
+                    WHERE c.id IN (" . implode(', ', $categoryId) . ") 
+                    ORDER BY a.created_at DESC";
+        } else {
+
+            $sql = "SELECT 
+                        c.id AS category_id, 
+                        c.name AS category_name, 
+                        a.id, 
+                        a.name, 
+                        a.image,
+                        a.description,
+                        a.content_text,
+                        a.created_at
+                    FROM categories c
+                    INNER JOIN article_to_category atc ON c.id = atc.category_id
+                    INNER JOIN articles a ON atc.article_id = a.id
+                    WHERE c.id = " . (int)$categoryId . "
+                    ORDER BY a.created_at DESC
+                    LIMIT " . $limit . " OFFSET " . $offset;
+        }
 
 
         $query = static::$pdo->query($sql);

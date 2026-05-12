@@ -94,6 +94,12 @@ div.article img {
 	width: 250px;
 }
 
+.article-header {
+	font-weight: bold;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
 .article-date {
 	font-size: 12px;
 	color: #999;
@@ -109,14 +115,51 @@ div.article img {
 }
 
 .article-container {
-	margin-left: 100px !important;
-	margin-top: 80px !important;
-	margin-right: 100px !important;
-	padding-bottom: 100px !important;
+	float: left;
 }
 
+/****** "article.tpl" layout ********/
+.article-layout {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.article-container1,
+.article-container2 {
+	background: rgba(255, 255, 255, 0.9);
+	max-width: 500px;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+	padding: 20px;
+}
+
+.article-container2 {
+	padding-top: 0px !important;
+}
+
+.article-container3 {
+	grid-column: 1 / span 2;
+	background: rgba(255, 255, 255, 0.95);
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+	margin-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+	.article-layout {
+		grid-template-columns: 1fr;
+	}
+	.article-container3 {
+		grid-column: 1;
+	}
+}
+/*****************************************/
+
 .article-tags {
-	margin-bottom: 20px !important;
+	margin-bottom: 10px !important;
 	font-size: 18px;
 }
 .article-tags span {
@@ -126,6 +169,7 @@ div.article img {
 .article-tags span a:hover {
 	text-decoration: underline;
 }
+
 
 /* Categories */
 .categories-grid {
@@ -271,6 +315,12 @@ span.alt a, span.home a:hover {
 	font-variant: small-caps;
 	text-decoration: none;
 
+}
+
+/* task.tpl */
+.container-in-content {
+	margin-left: 80px;
+	margin-right: 80px;
 }
 
 /* Pagination */

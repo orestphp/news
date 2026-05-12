@@ -92,6 +92,15 @@ class NewsController extends Controller
         // Get article tags (categories)
         $articleTags = CategoriesModel::getCategoriesByArticleId($articleId);
 
+        // Relative articles
+        $categoryArticles = $categoryIds = [];
+        foreach ($articleTags as $tag) {
+            $categoryIds[] = $tag['id'];
+        }
+        if($articleTags) {
+            $categoryArticles = ArticlesModel::getCategoryArticles($categoryIds);
+        }
+
         // 404 Page Not Found
         if(!$article || !$articleTags) {
             Route::errorPage404();
@@ -102,6 +111,7 @@ class NewsController extends Controller
             // $data
             [
                 'categories' => $this->categories,
+                'categoryArticles' => $categoryArticles,
                 'articleTags' => $articleTags,
                 'article' => $article,
             ]
