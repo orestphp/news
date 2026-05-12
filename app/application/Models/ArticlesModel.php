@@ -60,7 +60,15 @@ class ArticlesModel extends Model
         return $articles;
 	}
 
-	// Get all articles (for testing pagination)
+	// Get article
+	static function getArticle(int $id)
+    {
+        $query = static::$pdo->prepare('SELECT * FROM articles WHERE id = '. $id);
+        $query->execute();
+        return $query->fetch(static::$pdo::FETCH_ASSOC);
+    }
+
+    // Count all articles (for pagination)
 	static function countArticles()
     {
         $query = static::$pdo->prepare('SELECT COUNT(*) FROM articles');

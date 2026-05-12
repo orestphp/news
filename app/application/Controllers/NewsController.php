@@ -31,7 +31,7 @@ class NewsController extends Controller
     // all Articles
     public function actionArticles()
 	{
-	    // Page number
+	    // Pagination number
         $currentPage = (Route::inputGet('page')) ? (int) Route::inputGet('page') : 1;
 
         //Count articles
@@ -57,16 +57,24 @@ class NewsController extends Controller
         // Page number
         $currentPage = (Route::inputGet('page')) ? (int) Route::inputGet('page') : 1;
 
+        $currentCategory = CategoriesModel::getCategoryById($categoryId);
+
         //Count articles
         $countArticles = (int) ArticlesModel::countCategoryArticles($categoryId);
 
         // All categories with articles
         $categoryArticles = ArticlesModel::getCategoryArticles($categoryId);
 
+        // 404 Page Not Found
+        if(!$currentCategory || !$countArticles || !$categoryArticles) {
+            Route::errorPage404();
+        }
+
         // Render
         $this->view->render('cat_articles',
             // $data
             [
+                'currentCategory' => $currentCategory,
                 'categories' => $this->categories,
                 'categoryArticles' => $categoryArticles,
                 'currentPage' => $currentPage,
@@ -75,20 +83,26 @@ class NewsController extends Controller
         );
 	}
 
-	// Category articled
+	// Get article
 	public function actionArticle(int $articleId =  null)
 	{
-	    // Page number
-        $currentPage = (Route::inputGet('page')) ? (int) Route::inputGet('page') : 1;
-
         // Get article
         $article = ArticlesModel::getArticle($articleId);
 
+        // Get article tags (categories)
+        $articleTags = CategoriesModel::getCategoriesByArticleId($articleId);
+
+        // 404 Page Not Found
+        if(!$article || !$articleTags) {
+            Route::errorPage404();
+        }
+
         // Render
-		$this->view->render('articles',
+		$this->view->render('article',
             // $data
             [
                 'categories' => $this->categories,
+                'articleTags' => $articleTags,
                 'article' => $article,
             ]
         );

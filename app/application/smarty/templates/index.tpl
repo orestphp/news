@@ -32,8 +32,8 @@
         <div class="menu_2">
             <div class="category-all-topics">Все темы: </div>
             {foreach $data.categories as $cat}
-                <span class="category-badge">
-                    <a class="category_link" href="/news/category-articles/{$cat.id}">{$cat.name}</a>
+                <span class="category-badge {if isset($data.currentCategory.id) && $data.currentCategory.id == $cat.id}category-badge-hover{/if}">
+                    <a class="category-link" href="/news/category-articles/{$cat.id}">{$cat.name}</a>
                 </span>
             {/foreach}
         </div>

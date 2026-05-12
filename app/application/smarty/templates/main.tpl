@@ -1,7 +1,7 @@
 {extends file="index.tpl"}
 
 {block name="content"}
-	{foreach $data.categories as $key =>$category}
+	{foreach $data.categoriesAndArticles as $key =>$category}
 		<div class="categories-grid" >
 
 			<div class="category">
@@ -24,7 +24,7 @@
 						<div class="article-date">{$article.created_at|date_format}</div>
 
 						<div class="article-description">
-							{{$article.content_text|truncate:150:"...":true}}
+							{{$article.content_text|truncate:150:" ...":true}}
 						</div>
 
 						<div class="article-open">

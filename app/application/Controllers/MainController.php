@@ -6,7 +6,6 @@ use Application\Core\Controller;
 use Application\Core\Route;
 use Application\Core\View;
 use Application\Core\Model;
-use Application\Models\ArticlesModel;
 use Application\Models\CategoriesModel;
 
 /**
@@ -40,7 +39,8 @@ class MainController extends Controller
 		$this->view->render('main',
             // $data
             [
-                'categories' => $categoriesAndArticles,
+                'categories' => $this->categories,
+                'categoriesAndArticles' => $categoriesAndArticles,
                 'currentPage' => $currentPage,
                 'totalPages' => 1,
             ]

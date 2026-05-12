@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.8.0, created on 2026-05-11 15:49:31
+/* Smarty version 5.8.0, created on 2026-05-12 02:43:17
   from 'file:main.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.8.0',
-  'unifunc' => 'content_6a01fa8bc6c2b3_96793523',
+  'unifunc' => 'content_6a0293c5544638_84766588',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '333bb0fc8f6e2f154b9948d5d1787f08fd809c4e' => 
     array (
       0 => 'main.tpl',
-      1 => 1778514566,
+      1 => 1778553684,
       2 => 'file',
     ),
   ),
@@ -20,27 +20,27 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6a01fa8bc6c2b3_96793523 (\Smarty\Template $_smarty_tpl) {
+function content_6a0293c5544638_84766588 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_4000959006a01fa8bc47040_40802766', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_5535305576a0293c551fa91_30175308', "content");
 ?>
 
 <?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "index.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_4000959006a01fa8bc47040_40802766 extends \Smarty\Runtime\Block
+class Block_5535305576a0293c551fa91_30175308 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
 ?>
 
 	<?php
-$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('data')['categories'], 'category', false, 'key');
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('data')['categoriesAndArticles'], 'category', false, 'key');
 $foreach0DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('key')->value => $_smarty_tpl->getVariable('category')->value) {
 $foreach0DoElse = false;
@@ -82,7 +82,7 @@ $foreach1Backup = clone $_smarty_tpl->getVariable('article');
 
 						<div class="article-description">
 							<?php ob_start();
-echo $_smarty_tpl->getSmarty()->getModifierCallback('truncate')($_smarty_tpl->getValue('article')['content_text'],150,"...",true);
+echo $_smarty_tpl->getSmarty()->getModifierCallback('truncate')($_smarty_tpl->getValue('article')['content_text'],150," ...",true);
 $_prefixVariable1 = ob_get_clean();
 echo $_prefixVariable1;?>
 

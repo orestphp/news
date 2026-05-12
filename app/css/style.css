@@ -6,19 +6,17 @@ html, body {
 	color: #333;
 }
 
-/* --- Застосування фонового зображення --- */
 body {
-	background-image: url('../images/tulips_bg.png'); /* Шлях до згенерованого зображення */
-	background-size: cover; /* Зображення покриває весь екран */
-	background-position: center; /* Центруємо фон */
-	background-attachment: fixed; /* Фон не прокручується */
+	background-image: url('../images/tulips_bg.png');
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
 	background-repeat: no-repeat;
 }
 
-/* Огортка для всього контенту, щоб додати легке затемнення фону (опціонально) */
 .main-wrapper {
 	min-height: 100%;
-	background-color: rgba(0, 0, 0, 0.1); /* Дуже легка тінь, щоб виділити текст */
+	background-color: rgba(0, 0, 0, 0.1);
 }
 
 a {
@@ -110,6 +108,25 @@ div.article img {
 	text-decoration: underline;
 }
 
+.article-container {
+	margin-left: 100px !important;
+	margin-top: 80px !important;
+	margin-right: 100px !important;
+	padding-bottom: 100px !important;
+}
+
+.article-tags {
+	margin-bottom: 20px !important;
+	font-size: 18px;
+}
+.article-tags span {
+	color: #139EFF;
+	margin-right: 5px;
+ }
+.article-tags span a:hover {
+	text-decoration: underline;
+}
+
 /* Categories */
 .categories-grid {
 	display: grid;
@@ -172,6 +189,12 @@ div.categories span {
 }
 
 .category-badge:hover {
+	padding-top: 5px;
+	background-color: #007bff;
+	color: white;
+}
+
+.category-badge-hover{
 	padding-top: 5px;
 	background-color: #007bff;
 	color: white;
