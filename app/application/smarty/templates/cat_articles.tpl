@@ -3,22 +3,46 @@
 {block name="content"}
 
 	<div class="categories-grid" >
-
 		<div class="category">
 			<div class="category-name">
-				<span style="color: dodgerblue;font-weight: bold !important;">{$data.categoryArticles[0].category_name}</span>
+				<span style="color: dodgerblue;font-weight: bold !important;">
+					{$data.categoryArticles[0].category_name}
+				</span>
 			</div>
+
+			<div id="articles-sort-by-views" class="articles-sort-by">
+				<a href="/news/category-articles/1?sort_views={!$data.sortViews}&sort_date={$data.sortDate}">
+					sort by Views
+				</a>
+			</div>
+			<div id="articles-sort-by-date" class="articles-sort-by">
+				<a href="/news/category-articles/1?sort_date={!$data.sortDate}&sort_views={$data.sortViews}">
+					sort by Date
+				</a>
+			</div>
+		</div>
+
+		<div class="category-description">
+			{$data.categoryArticles[0].category_description}
 		</div>
 
 		<div class="articles-grid">
 			{foreach $data.categoryArticles as $article}
 				<div class="article">
-
-					<img src="/images/articles/{$article.image}" alt="{$article.name}">
+					<a href="/news/article/{$article.id}">
+						<img src="/images/articles/{$article.image}" alt="{$article.name}">
+					</a>
 
 					<h4>{$article.name}</h4>
 
-					<div class="article-date">{$article.created_at|date_format}</div>
+					<div class="article-date">
+						{$article.created_at|date_format}
+
+						<div class="article-views-count-num">
+							{$article.views_count}
+						</div>
+						<div class="article-views-count-img"></div>
+					</div>
 
 					<div class="article-description">
 						{{$article.content_text|truncate:150:"...":true}}
@@ -72,4 +96,23 @@
 		</ul>
 	</div>
 
+	<script>
+		$(function() {
+			const urlParams = new URLSearchParams(window.location.search);
+			const sortViews = urlParams.get('sort_views');
+			const sortDate = urlParams.get('sort_date');
+
+			// Sorted sign
+			if(sortViews==='1') {
+				$('#articles-sort-by-views a').css('text-decoration', 'underline');
+			} else {
+				$('#articles-sort-by-views a').css('text-decoration', 'none');
+			}
+			if(sortDate==='1') {
+				$('#articles-sort-by-date a').css('text-decoration', 'underline');
+			} else {
+				$('#articles-sort-by-date a').css('text-decoration', 'none');
+			}
+		});
+	</script>
 {/block}

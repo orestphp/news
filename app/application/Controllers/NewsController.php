@@ -34,11 +34,15 @@ class NewsController extends Controller
 	    // Pagination number
         $currentPage = (Route::inputGet('page')) ? (int) Route::inputGet('page') : 1;
 
+        // Sort articles
+        $sortDate = (Route::inputGet('sort_date')) ? (int) Route::inputGet('sort_date') : 0;
+        $sortViews = (Route::inputGet('sort_views')) ? (int) Route::inputGet('sort_views') : 0;
+
         //Count articles
         $countArticles = (int) ArticlesModel::countArticles();
 
         // All $articles
-        $articles = ArticlesModel::getAllArticles($currentPage);
+        $articles = ArticlesModel::getAllArticles($currentPage, $sortDate, $sortViews);
 
         // Render
 		$this->view->render('articles',
@@ -47,7 +51,9 @@ class NewsController extends Controller
                 'categories' => $this->categories,
                 'articles' => $articles,
                 'currentPage' => $currentPage,
-                'totalPages' => ceil($countArticles / ArticlesModel::$pageLimit)
+                'totalPages' => ceil($countArticles / ArticlesModel::$pageLimit),
+                'sortDate' => $sortDate,
+                'sortViews' => $sortViews,
             ]
         );
 	}
@@ -57,13 +63,17 @@ class NewsController extends Controller
         // Page number
         $currentPage = (Route::inputGet('page')) ? (int) Route::inputGet('page') : 1;
 
+        // Sort articles
+        $sortDate = (Route::inputGet('sort_date')) ? (int) Route::inputGet('sort_date') : 0;
+        $sortViews = (Route::inputGet('sort_views')) ? (int) Route::inputGet('sort_views') : 0;
+
         $currentCategory = CategoriesModel::getCategoryById($categoryId);
 
         //Count articles
         $countArticles = (int) ArticlesModel::countCategoryArticles($categoryId);
 
         // All categories with articles
-        $categoryArticles = ArticlesModel::getCategoryArticles($categoryId);
+        $categoryArticles = ArticlesModel::getCategoryArticles($categoryId, $sortDate, $sortViews);
 
         // 404 Page Not Found
         if(!$currentCategory || !$countArticles || !$categoryArticles) {
@@ -78,7 +88,9 @@ class NewsController extends Controller
                 'categories' => $this->categories,
                 'categoryArticles' => $categoryArticles,
                 'currentPage' => $currentPage,
-                'totalPages' => ceil($countArticles / ArticlesModel::$pageLimit)
+                'totalPages' => ceil($countArticles / ArticlesModel::$pageLimit),
+                'sortViews' => $sortViews,
+                'sortDate' => $sortDate,
             ]
         );
 	}

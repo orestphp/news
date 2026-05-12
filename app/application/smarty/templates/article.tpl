@@ -19,7 +19,14 @@
 		<div class="article-container2">
 			<h2 style="color:#139EFF">{$data.article.name}</h2>
 
-			<div class="article-date">{$data.article.created_at|date_format}</div>
+			<div class="article-date">
+				{$data.article.created_at|date_format}
+
+				<div class="article-views-count-num">
+					{$data.article.views_count}
+				</div>
+				<div class="article-views-count-img"></div>
+			</div>
 
 			<div class="article-header">
 				{$data.article.description}
@@ -31,15 +38,24 @@
 		</div>
 
 		<div class="article-container3">
-			<div class="articles-grid" style="padding-left: 0px !important;">
+			<div class="articles-grid" style="padding-left: 0 !important;">
 				{foreach $data.categoryArticles as $article}
 					<div class="article" style="margin-left: 40px !important;">
 
-						<img src="/images/articles/{$article.image}" alt="{$article.name}">
+						<a href="/news/article/{$article.id}">
+							<img src="/images/articles/{$article.image}" alt="{$article.name}">
+						</a>
 
 						<h4>{$article.name}</h4>
 
-						<div class="article-date">{$article.created_at|date_format}</div>
+						<div class="article-date">
+							{$article.created_at|date_format}
+
+							<div class="article-views-count-num">
+								{$article.views_count}
+							</div>
+							<div class="article-views-count-img"></div>
+						</div>
 
 						<div class="article-description">
 							{{$article.content_text|truncate:150:" ...":true}}

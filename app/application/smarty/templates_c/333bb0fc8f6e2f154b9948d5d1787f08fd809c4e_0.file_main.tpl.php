@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.8.0, created on 2026-05-12 02:43:17
+/* Smarty version 5.8.0, created on 2026-05-12 11:47:58
   from 'file:main.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.8.0',
-  'unifunc' => 'content_6a0293c5544638_84766588',
+  'unifunc' => 'content_6a03136e099cf9_62180882',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '333bb0fc8f6e2f154b9948d5d1787f08fd809c4e' => 
     array (
       0 => 'main.tpl',
-      1 => 1778553684,
+      1 => 1778586476,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,20 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6a0293c5544638_84766588 (\Smarty\Template $_smarty_tpl) {
+function content_6a03136e099cf9_62180882 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_5535305576a0293c551fa91_30175308', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_20706583056a03136e08ef37_90236208', "content");
 ?>
 
 <?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "index.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_5535305576a0293c551fa91_30175308 extends \Smarty\Runtime\Block
+class Block_20706583056a03136e08ef37_90236208 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
@@ -51,10 +51,10 @@ $foreach0DoElse = false;
 				<div class="category-name">
 					<span><?php echo $_smarty_tpl->getValue('category')['name'];?>
 </span>
-					<div>
-						<a href="/news/category-articles/<?php echo $_smarty_tpl->getValue('category')['id'];?>
+				</div>
+				<div class="articles-sort-by">
+					<a class="articles-cat-all" href="/news/category-articles/<?php echo $_smarty_tpl->getValue('category')['id'];?>
 ">View all</a>
-					</div>
 				</div>
 			</div>
 
@@ -70,9 +70,12 @@ $foreach1Backup = clone $_smarty_tpl->getVariable('article');
 ?>
 					<div class="article">
 
-						<img src="/images/articles/<?php echo $_smarty_tpl->getValue('article')['image'];?>
+						<a href="/news/article/<?php echo $_smarty_tpl->getValue('article')['id'];?>
+">
+							<img src="/images/articles/<?php echo $_smarty_tpl->getValue('article')['image'];?>
 " alt="<?php echo $_smarty_tpl->getValue('article')['name'];?>
 ">
+						</a>
 
 						<h4><?php echo $_smarty_tpl->getValue('article')['name'];?>
 </h4>

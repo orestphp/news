@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.8.0, created on 2026-05-11 15:45:18
+/* Smarty version 5.8.0, created on 2026-05-12 15:59:43
   from 'file:cat_articles.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.8.0',
-  'unifunc' => 'content_6a01f98e51d892_40533350',
+  'unifunc' => 'content_6a034e6fe776c4_64955752',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '39d0ebddd8140ac3fa03d7a781f67a72bb668005' => 
     array (
       0 => 'cat_articles.tpl',
-      1 => 1778514317,
+      1 => 1778598771,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,20 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6a01f98e51d892_40533350 (\Smarty\Template $_smarty_tpl) {
+function content_6a034e6fe776c4_64955752 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_7793042116a01f98e48a251_86505748', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_10303087276a034e6fe38ae2_15772494', "content");
 ?>
 
 <?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "index.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_7793042116a01f98e48a251_86505748 extends \Smarty\Runtime\Block
+class Block_10303087276a034e6fe38ae2_15772494 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
@@ -41,12 +41,33 @@ $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
 
 
 	<div class="categories-grid" >
-
 		<div class="category">
 			<div class="category-name">
-				<span style="color: dodgerblue;font-weight: bold !important;"><?php echo $_smarty_tpl->getValue('data')['categoryArticles'][0]['category_name'];?>
-</span>
+				<span style="color: dodgerblue;font-weight: bold !important;">
+					<?php echo $_smarty_tpl->getValue('data')['categoryArticles'][0]['category_name'];?>
+
+				</span>
 			</div>
+
+			<div id="articles-sort-by-views" class="articles-sort-by">
+				<a href="/news/category-articles/1?sort_views=<?php echo !$_smarty_tpl->getValue('data')['sortViews'];?>
+&sort_date=<?php echo $_smarty_tpl->getValue('data')['sortDate'];?>
+">
+					sort by Views
+				</a>
+			</div>
+			<div id="articles-sort-by-date" class="articles-sort-by">
+				<a href="/news/category-articles/1?sort_date=<?php echo !$_smarty_tpl->getValue('data')['sortDate'];?>
+&sort_views=<?php echo $_smarty_tpl->getValue('data')['sortViews'];?>
+">
+					sort by Date
+				</a>
+			</div>
+		</div>
+
+		<div class="category-description">
+			<?php echo $_smarty_tpl->getValue('data')['categoryArticles'][0]['category_description'];?>
+
 		</div>
 
 		<div class="articles-grid">
@@ -60,16 +81,26 @@ $_smarty_tpl->getVariable('article')->iteration++;
 $foreach0Backup = clone $_smarty_tpl->getVariable('article');
 ?>
 				<div class="article">
-
-					<img src="/images/articles/<?php echo $_smarty_tpl->getValue('article')['image'];?>
+					<a href="/news/article/<?php echo $_smarty_tpl->getValue('article')['id'];?>
+">
+						<img src="/images/articles/<?php echo $_smarty_tpl->getValue('article')['image'];?>
 " alt="<?php echo $_smarty_tpl->getValue('article')['name'];?>
 ">
+					</a>
 
 					<h4><?php echo $_smarty_tpl->getValue('article')['name'];?>
 </h4>
 
-					<div class="article-date"><?php echo $_smarty_tpl->getSmarty()->getModifierCallback('date_format')($_smarty_tpl->getValue('article')['created_at']);?>
-</div>
+					<div class="article-date">
+						<?php echo $_smarty_tpl->getSmarty()->getModifierCallback('date_format')($_smarty_tpl->getValue('article')['created_at']);?>
+
+
+						<div class="article-views-count-num">
+							<?php echo $_smarty_tpl->getValue('article')['views_count'];?>
+
+						</div>
+						<div class="article-views-count-img"></div>
+					</div>
 
 					<div class="article-description">
 						<?php ob_start();
@@ -142,6 +173,27 @@ $_smarty_tpl->tpl_vars['p']->first = $_smarty_tpl->tpl_vars['p']->iteration === 
 		</ul>
 	</div>
 
+	<?php echo '<script'; ?>
+>
+		$(function() {
+			const urlParams = new URLSearchParams(window.location.search);
+			const sortViews = urlParams.get('sort_views');
+			const sortDate = urlParams.get('sort_date');
+
+			// Sorted sign
+			if(sortViews==='1') {
+				$('#articles-sort-by-views a').css('text-decoration', 'underline');
+			} else {
+				$('#articles-sort-by-views a').css('text-decoration', 'none');
+			}
+			if(sortDate==='1') {
+				$('#articles-sort-by-date a').css('text-decoration', 'underline');
+			} else {
+				$('#articles-sort-by-date a').css('text-decoration', 'none');
+			}
+		});
+	<?php echo '</script'; ?>
+>
 <?php
 }
 }

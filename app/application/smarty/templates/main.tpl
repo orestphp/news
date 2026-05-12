@@ -7,9 +7,9 @@
 			<div class="category">
 				<div class="category-name">
 					<span>{$category.name}</span>
-					<div>
-						<a href="/news/category-articles/{$category.id}">View all</a>
-					</div>
+				</div>
+				<div class="articles-sort-by">
+					<a class="articles-cat-all" href="/news/category-articles/{$category.id}">View all</a>
 				</div>
 			</div>
 
@@ -17,7 +17,9 @@
 				{foreach $category.articles as $article}
 					<div class="article">
 
-						<img src="/images/articles/{$article.image}" alt="{$article.name}">
+						<a href="/news/article/{$article.id}">
+							<img src="/images/articles/{$article.image}" alt="{$article.name}">
+						</a>
 
 						<h4>{$article.name}</h4>
 

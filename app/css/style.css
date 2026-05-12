@@ -106,6 +106,22 @@ div.article img {
 	margin-bottom: 15px;
 }
 
+
+.article-views-count-num {
+	padding-right: 10px;
+	display: inline-block;
+	float: right;color: #999999;
+}
+
+.article-views-count-img {
+	display: inline-block;
+	width: 20px;
+	height: 13px;
+	background: url('../images/views_count.png') no-repeat center / 25px 25px;
+	padding-right: 10px;
+	float: right;color: #999999;
+}
+
 .article-open {
 	padding-top: 20px;
 }
@@ -116,6 +132,23 @@ div.article img {
 
 .article-container {
 	float: left;
+}
+
+.articles-sort-by {
+	margin-top: 5px;
+	float:right;
+	width: 100px;
+	font-size: 15px;
+}
+
+.articles-sort-by a:hover {
+	text-decoration: underline;
+}
+
+.articles-cat-all {
+	display: inline-block;
+	float: right;
+	font-size: 15px;
 }
 
 /****** "article.tpl" layout ********/
@@ -180,14 +213,21 @@ div.article img {
 	margin: 20px;
 	width: 930px;
 }
+.category-description {
+	width: 930px;
+	padding-left: 150px;
+	padding-bottom: 20px;
+}
 
 .category-name {
 	padding-left: 130px;
+	width: 200px;
+	display: inline-block;
 }
 
 .category-name span {
 	text-transform: uppercase;
-	font-size: 18px;
+	font-size: 20px;
 	font-weight: normal;
 }
 

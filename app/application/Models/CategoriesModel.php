@@ -35,6 +35,7 @@ class CategoriesModel extends Model
                         'id', a.id, 
                         'name', a.name,
                         'description', a.description,
+                        'views_count', a.views_count,
                         'content_text', a.content_text,
                         'image', a.image,
                         'views_count', a.views_count,
