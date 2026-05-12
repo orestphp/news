@@ -45,6 +45,3 @@ http://127.0.0.1:8081/
    - `docker logs -f <container_id>` - see incomming logs for container
    - Swow tree Directory/Files in container: 
      ``` $ find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'```
-     
-## Testing vars - tt(var):array / td(var):dump
-   - `?><pre><?= tt($articles); ?></pre><?php`
