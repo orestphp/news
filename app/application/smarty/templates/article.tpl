@@ -32,28 +32,28 @@
 
 		<div class="article-container3">
 			<div class="articles-grid" style="padding-left: 0px !important;">
-			{foreach $data.categoryArticles as $article}
-				<div class="article" style="margin-left: 40px !important;">
+				{foreach $data.categoryArticles as $article}
+					<div class="article" style="margin-left: 40px !important;">
 
-					<img src="/images/articles/{$article.image}" alt="{$article.name}">
+						<img src="/images/articles/{$article.image}" alt="{$article.name}">
 
-					<h4>{$article.name}</h4>
+						<h4>{$article.name}</h4>
 
-					<div class="article-date">{$article.created_at|date_format}</div>
+						<div class="article-date">{$article.created_at|date_format}</div>
 
-					<div class="article-description">
-						{{$article.content_text|truncate:150:" ...":true}}
+						<div class="article-description">
+							{{$article.content_text|truncate:150:" ...":true}}
+						</div>
+
+						<div class="article-open">
+							<a href="/news/article/{$article.id}">Подробнее ...</a>
+						</div>
+
+						{if $article@iteration % 3 == 0}
+							{break}
+						{/if}
 					</div>
-
-					<div class="article-open">
-						<a href="/news/article/{$article.id}">Подробнее ...</a>
-					</div>
-
-					{if $article@iteration % 3 == 0}
-						{break}
-					{/if}
-				</div>
-			{/foreach}
+				{/foreach}
 			</div>
 		</div>
 

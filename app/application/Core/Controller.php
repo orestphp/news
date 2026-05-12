@@ -18,6 +18,10 @@ abstract class Controller
 
         // All categories
         $this->categories = CategoriesModel::getAllCategories();
+        // 404 Page Not Found
+        if(!$this->categories) {
+            Route::errorPage404();
+        }
     }
 
 
