@@ -5,6 +5,8 @@
    - FROM php:8.2-fpm
    - FROM mysql:8.0
    - FROM phpMyAdmin
+   - FROM composer:latest
+      * Smarty
 
 ## Project Installation
 
@@ -45,3 +47,12 @@ http://127.0.0.1:8081/
    - `docker logs -f <container_id>` - see incomming logs for container
    - Swow tree Directory/Files in container: 
      ``` $ find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'```
+
+## Development Notes
+  - Project architecture comes with Docker environment and PHP Application.
+  - PHP Application is based on MVC pattern, using Core/Route, Core/ActiveRecord, Model, View, Controller.
+  - Core/Route is used to route incoming request to controller.
+  - Core/ActiveRecord is used to interact with database.
+  - Model is used to define database table structure and query.
+  - View is used to render HTML page using Smarty template engine.
+  - Controller is used to handle incoming request through the Route and return response.
