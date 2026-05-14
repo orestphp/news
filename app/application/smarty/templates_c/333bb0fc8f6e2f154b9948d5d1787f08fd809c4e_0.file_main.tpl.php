@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.8.0, created on 2026-05-14 09:12:35
+/* Smarty version 5.8.0, created on 2026-05-14 09:33:08
   from 'file:main.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.8.0',
-  'unifunc' => 'content_6a059203c103b3_74950276',
+  'unifunc' => 'content_6a0596d4e906a9_48716799',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '333bb0fc8f6e2f154b9948d5d1787f08fd809c4e' => 
     array (
       0 => 'main.tpl',
-      1 => 1778749954,
+      1 => 1778750092,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,20 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6a059203c103b3_74950276 (\Smarty\Template $_smarty_tpl) {
+function content_6a0596d4e906a9_48716799 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_21019844066a059203c00466_13162076', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_10816757136a0596d4e65609_28182875', "content");
 ?>
 
 <?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "index.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_21019844066a059203c00466_13162076 extends \Smarty\Runtime\Block
+class Block_10816757136a0596d4e65609_28182875 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
@@ -92,7 +92,7 @@ echo $_prefixVariable1;?>
 							<a href="/news/article/<?php echo $_smarty_tpl->getValue('article')['id'];?>
 ">Подробнее ...</a>
 						</div>
-						
+
 					</div>
 				<?php
 }
