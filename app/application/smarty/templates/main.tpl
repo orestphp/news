@@ -33,9 +33,6 @@
 							<a href="/news/article/{$article.id}">Подробнее ...</a>
 						</div>
 
-						{if $article@iteration % 3 == 0}
-							{break}
-						{/if}
 					</div>
 				{/foreach}
 			</div>

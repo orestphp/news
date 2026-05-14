@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.8.0, created on 2026-05-12 11:47:58
+/* Smarty version 5.8.0, created on 2026-05-14 09:12:35
   from 'file:main.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.8.0',
-  'unifunc' => 'content_6a03136e099cf9_62180882',
+  'unifunc' => 'content_6a059203c103b3_74950276',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '333bb0fc8f6e2f154b9948d5d1787f08fd809c4e' => 
     array (
       0 => 'main.tpl',
-      1 => 1778586476,
+      1 => 1778749954,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,20 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6a03136e099cf9_62180882 (\Smarty\Template $_smarty_tpl) {
+function content_6a059203c103b3_74950276 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_20706583056a03136e08ef37_90236208', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_21019844066a059203c00466_13162076', "content");
 ?>
 
 <?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "index.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_20706583056a03136e08ef37_90236208 extends \Smarty\Runtime\Block
+class Block_21019844066a059203c00466_13162076 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
@@ -61,12 +61,9 @@ $foreach0DoElse = false;
 			<div class="articles-grid">
 				<?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('category')['articles'], 'article');
-$_smarty_tpl->getVariable('article')->iteration = 0;
 $foreach1DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('article')->value) {
 $foreach1DoElse = false;
-$_smarty_tpl->getVariable('article')->iteration++;
-$foreach1Backup = clone $_smarty_tpl->getVariable('article');
 ?>
 					<div class="article">
 
@@ -95,13 +92,9 @@ echo $_prefixVariable1;?>
 							<a href="/news/article/<?php echo $_smarty_tpl->getValue('article')['id'];?>
 ">Подробнее ...</a>
 						</div>
-
-						<?php if ($_smarty_tpl->getVariable('article')->iteration%3 == 0) {?>
-							<?php break 1;?>
-						<?php }?>
+						
 					</div>
 				<?php
-$_smarty_tpl->setVariable('article', $foreach1Backup);
 }
 $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 			</div>
