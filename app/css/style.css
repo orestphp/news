@@ -321,14 +321,16 @@ div.menu_1 {
 }
 
 
-.menu_1 article {
+.menu_1 span.article-menu {
 	position: absolute;
+	top: -2px;
 	left: 105px;
 }
 
 .menu_1 span.task {
 	position: absolute;
-	left: 192px;
+	top: -2px;
+	left: 189px;
 }
 
 .menu_1 span.alt a, span.home {

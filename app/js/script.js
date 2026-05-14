@@ -21,13 +21,17 @@ $(function() {
 
     const controller = (0 in arrayURIPath) ? arrayURIPath[0] : '';
     const action = (1 in arrayURIPath) ? arrayURIPath[1] : '';
+
+    // Selected .menu_1
     if(controller === 'news' && action === 'articles') {
         // Top ".menu_1"
-        $('.menu_1  span.articles').css('background', '#139EFF');
-        $('.menu_1  span.articles a').css('background', '#139EFF');
+        $('.menu_1  span.article-menu').css('background', '#139EFF');
+        $('.menu_1  span.article-menu a').css('background', '#139EFF');
         $('.menu_1  span.home').css('background', '#99DE00');
         $('.menu_1  span.home a').css('background', '#99DE00');
-    } else if(controller === 'main' && action === 'task') {
+    }
+
+    if(controller === 'main' && action === 'task') {
         // Top ".menu_1"
         $('.menu_1  span.task').css('background', '#139EFF');
         $('.menu_1  span.task a').css('background', '#139EFF');

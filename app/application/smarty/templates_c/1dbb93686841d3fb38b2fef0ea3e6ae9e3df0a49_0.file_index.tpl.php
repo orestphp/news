@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.8.0, created on 2026-05-14 04:09:08
+/* Smarty version 5.8.0, created on 2026-05-14 10:45:21
   from 'file:index.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.8.0',
-  'unifunc' => 'content_6a054ae40c72e7_80219636',
+  'unifunc' => 'content_6a05a7c185c3c1_08895638',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1dbb93686841d3fb38b2fef0ea3e6ae9e3df0a49' => 
     array (
       0 => 'index.tpl',
-      1 => 1778731746,
+      1 => 1778755520,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6a054ae40c72e7_80219636 (\Smarty\Template $_smarty_tpl) {
+function content_6a05a7c185c3c1_08895638 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
 ?>
@@ -39,24 +39,24 @@ $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
 
     <title>
         <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_858744456a054ae40c0565_31040020', 'title');
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1194395196a05a7c18506d7_75432965', 'title');
 ?>
 
     </title>
     <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_14015462066a054ae40c1439_77617325', 'head');
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_2986153996a05a7c1852238_26156358', 'head');
 ?>
 
 </head>
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_10612893726a054ae40c1a92_11858989', 'body');
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_19712365366a05a7c1852e57_68734408', 'body');
 ?>
 
 
 </html><?php }
 /* {block 'title'} */
-class Block_858744456a054ae40c0565_31040020 extends \Smarty\Runtime\Block
+class Block_1194395196a05a7c18506d7_75432965 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
@@ -68,7 +68,7 @@ $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
 }
 /* {/block 'title'} */
 /* {block 'head'} */
-class Block_14015462066a054ae40c1439_77617325 extends \Smarty\Runtime\Block
+class Block_2986153996a05a7c1852238_26156358 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
@@ -76,7 +76,7 @@ $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
 }
 /* {/block 'head'} */
 /* {block "content"} */
-class Block_14425952466a054ae40c68d6_27119975 extends \Smarty\Runtime\Block
+class Block_4345099496a05a7c185b396_64996972 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
@@ -87,7 +87,7 @@ $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
 }
 /* {/block "content"} */
 /* {block 'body'} */
-class Block_10612893726a054ae40c1a92_11858989 extends \Smarty\Runtime\Block
+class Block_19712365366a05a7c1852e57_68734408 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
@@ -104,7 +104,7 @@ $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
         <div class="menu_1">
             <span class="home"><a href="<?php echo URL;?>
 ">News Today</a></span>
-            <span class="alt articles"><a href="<?php echo URL;?>
+            <span class="alt article-menu"><a href="<?php echo URL;?>
 /news/articles">Articles</a></span>
             <span class="alt task"><a href="<?php echo URL;?>
 /main/task">The Task</a></span>
@@ -130,7 +130,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 
         <div class="content">
             <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_14425952466a054ae40c68d6_27119975', "content", $this->tplIndex);
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_4345099496a05a7c185b396_64996972', "content", $this->tplIndex);
 ?>
 
         </div>

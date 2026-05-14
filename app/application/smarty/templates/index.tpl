@@ -26,7 +26,7 @@
 
         <div class="menu_1">
             <span class="home"><a href="{URL}">News Today</a></span>
-            <span class="alt articles"><a href="{URL}/news/articles">Articles</a></span>
+            <span class="alt article-menu"><a href="{URL}/news/articles">Articles</a></span>
             <span class="alt task"><a href="{URL}/main/task">The Task</a></span>
         </div>
 
