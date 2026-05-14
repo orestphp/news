@@ -28,26 +28,29 @@ class CategoriesModel extends Model
 
     public static function getCategoriesWithArticles() : array
     {
-        $sql = "SELECT c.*, 
-            (
-                SELECT JSON_ARRAYAGG(
-                    JSON_OBJECT(
-                        'id', a.id, 
-                        'name', a.name,
-                        'description', a.description,
-                        'views_count', a.views_count,
-                        'content_text', a.content_text,
-                        'image', a.image,
-                        'views_count', a.views_count,
-                        'created_at', a.created_at
-                    )
-                )
-                FROM article_to_category atc
-                JOIN articles a ON atc.article_id = a.id
-                WHERE atc.category_id = c.id
-            ) AS articles
-            FROM categories c
-            ORDER BY c.name ASC";
+        $sql = "SELECT c.*, art_json.articles
+                FROM categories c
+                LEFT JOIN LATERAL (
+                    SELECT JSON_ARRAYAGG(
+                        JSON_OBJECT(
+                            'id', a.id, 
+                            'name', a.name,
+                            'description', a.description,
+                            'views_count', a.views_count,
+                            'content_text', a.content_text,
+                            'image', a.image,
+                            'created_at', a.created_at
+                        )
+                    ) AS articles
+                    FROM (
+                        SELECT a.*
+                        FROM article_to_category atc
+                        JOIN articles a ON atc.article_id = a.id
+                        WHERE atc.category_id = c.id
+                        ORDER BY a.created_at DESC
+                    ) a
+                ) art_json ON TRUE
+                ORDER BY c.name ASC";
 
         $categories = static::$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 

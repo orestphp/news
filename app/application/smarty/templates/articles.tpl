@@ -88,24 +88,4 @@
 		</ul>
 	</div>
 
-	<script>
-		$(function() {
-			const urlParams = new URLSearchParams(window.location.search);
-			const sortViews = urlParams.get('sort_views');
-			const sortDate = urlParams.get('sort_date');
-
-			// Sorted sign
-			if(sortViews==='1') {
-				$('#articles-sort-by-views a').css('text-decoration', 'underline');
-			} else {
-				$('#articles-sort-by-views a').css('text-decoration', 'none');
-			}
-			if(sortDate==='1') {
-				$('#articles-sort-by-date a').css('text-decoration', 'underline');
-			} else {
-				$('#articles-sort-by-date a').css('text-decoration', 'none');
-			}
-		});
-	</script>
-
 {/block}

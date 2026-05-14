@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.8.0, created on 2026-05-12 15:56:22
+/* Smarty version 5.8.0, created on 2026-05-14 03:55:33
   from 'file:articles.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.8.0',
-  'unifunc' => 'content_6a034da65d01a4_38374423',
+  'unifunc' => 'content_6a0547b55172b0_10769957',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5738cb38d3e854714509d76c9b0353c98ff7f3af' => 
     array (
       0 => 'articles.tpl',
-      1 => 1778601377,
+      1 => 1778730901,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,20 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6a034da65d01a4_38374423 (\Smarty\Template $_smarty_tpl) {
+function content_6a0547b55172b0_10769957 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_9499686656a034da65a6810_34766577', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_11302841956a0547b54ec0f8_37223326', "content");
 ?>
 
 <?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "index.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_9499686656a034da65a6810_34766577 extends \Smarty\Runtime\Block
+class Block_11302841956a0547b54ec0f8_37223326 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
@@ -162,28 +162,6 @@ $_smarty_tpl->tpl_vars['p']->first = $_smarty_tpl->tpl_vars['p']->iteration === 
 
 		</ul>
 	</div>
-
-	<?php echo '<script'; ?>
->
-		$(function() {
-			const urlParams = new URLSearchParams(window.location.search);
-			const sortViews = parseInt(urlParams.get('sort_views')) || 0;
-			const sortDate = parseInt(urlParams.get('sort_date')) || 0;
-			console.log(sortViews, sortDate);
-			// Sorted sign
-			if(sortViews===1) {
-				$('#articles-sort-by-views a').css('text-decoration', 'underline');
-			} else {
-				$('#articles-sort-by-views a').css('text-decoration', 'none');
-			}
-			if(sortDate===1) {
-				$('#articles-sort-by-date a').css('text-decoration', 'underline');
-			} else {
-				$('#articles-sort-by-date a').css('text-decoration', 'none');
-			}
-		});
-	<?php echo '</script'; ?>
->
 
 <?php
 }

@@ -84,6 +84,7 @@ class NewsController extends Controller
         $this->view->render('cat_articles',
             // $data
             [
+                'categoryId' => $categoryId,
                 'currentCategory' => $currentCategory,
                 'categories' => $this->categories,
                 'categoryArticles' => $categoryArticles,

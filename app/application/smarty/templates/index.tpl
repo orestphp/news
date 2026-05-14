@@ -5,6 +5,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" media="screen" href="../../../css/style.css" type="text/css" />
     <script src="../../../js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="../../../js/script.js" type="text/javascript"></script>
 
     <title>
         {block name=title}
@@ -25,8 +26,8 @@
 
         <div class="menu_1">
             <span class="home"><a href="{URL}">News Today</a></span>
-            <span class="alt"><a href="{URL}/news/articles">Articles</a></span>
-            <span class="alt"><a href="{URL}/main/task">The Task</a></span>
+            <span class="alt articles"><a href="{URL}/news/articles">Articles</a></span>
+            <span class="alt task"><a href="{URL}/main/task">The Task</a></span>
         </div>
 
         <div class="menu_2">

@@ -11,12 +11,12 @@
 			</div>
 
 			<div id="articles-sort-by-views" class="articles-sort-by">
-				<a href="/news/category-articles/1?sort_views={!$data.sortViews}&sort_date={$data.sortDate}">
+				<a href="/news/category-articles/{$data.categoryId}?sort_views={!$data.sortViews}&sort_date={$data.sortDate}">
 					sort by Views
 				</a>
 			</div>
 			<div id="articles-sort-by-date" class="articles-sort-by">
-				<a href="/news/category-articles/1?sort_date={!$data.sortDate}&sort_views={$data.sortViews}">
+				<a href="/news/category-articles/{$data.categoryId}?sort_date={!$data.sortDate}&sort_views={$data.sortViews}">
 					sort by Date
 				</a>
 			</div>
@@ -96,23 +96,4 @@
 		</ul>
 	</div>
 
-	<script>
-		$(function() {
-			const urlParams = new URLSearchParams(window.location.search);
-			const sortViews = urlParams.get('sort_views');
-			const sortDate = urlParams.get('sort_date');
-
-			// Sorted sign
-			if(sortViews==='1') {
-				$('#articles-sort-by-views a').css('text-decoration', 'underline');
-			} else {
-				$('#articles-sort-by-views a').css('text-decoration', 'none');
-			}
-			if(sortDate==='1') {
-				$('#articles-sort-by-date a').css('text-decoration', 'underline');
-			} else {
-				$('#articles-sort-by-date a').css('text-decoration', 'none');
-			}
-		});
-	</script>
 {/block}

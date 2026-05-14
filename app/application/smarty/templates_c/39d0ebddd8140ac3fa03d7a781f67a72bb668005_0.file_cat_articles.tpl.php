@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.8.0, created on 2026-05-12 15:59:43
+/* Smarty version 5.8.0, created on 2026-05-14 05:18:19
   from 'file:cat_articles.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.8.0',
-  'unifunc' => 'content_6a034e6fe776c4_64955752',
+  'unifunc' => 'content_6a055b1b916be9_33847654',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '39d0ebddd8140ac3fa03d7a781f67a72bb668005' => 
     array (
       0 => 'cat_articles.tpl',
-      1 => 1778598771,
+      1 => 1778735897,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,20 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6a034e6fe776c4_64955752 (\Smarty\Template $_smarty_tpl) {
+function content_6a055b1b916be9_33847654 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_10303087276a034e6fe38ae2_15772494', "content");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_18752497326a055b1b8d6de1_32123041', "content");
 ?>
 
 <?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "index.tpl", $_smarty_current_dir);
 }
 /* {block "content"} */
-class Block_10303087276a034e6fe38ae2_15772494 extends \Smarty\Runtime\Block
+class Block_18752497326a055b1b8d6de1_32123041 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
@@ -50,14 +50,16 @@ $_smarty_current_dir = '/var/www/news/app/application/smarty/templates';
 			</div>
 
 			<div id="articles-sort-by-views" class="articles-sort-by">
-				<a href="/news/category-articles/1?sort_views=<?php echo !$_smarty_tpl->getValue('data')['sortViews'];?>
+				<a href="/news/category-articles/<?php echo $_smarty_tpl->getValue('data')['categoryId'];?>
+?sort_views=<?php echo !$_smarty_tpl->getValue('data')['sortViews'];?>
 &sort_date=<?php echo $_smarty_tpl->getValue('data')['sortDate'];?>
 ">
 					sort by Views
 				</a>
 			</div>
 			<div id="articles-sort-by-date" class="articles-sort-by">
-				<a href="/news/category-articles/1?sort_date=<?php echo !$_smarty_tpl->getValue('data')['sortDate'];?>
+				<a href="/news/category-articles/<?php echo $_smarty_tpl->getValue('data')['categoryId'];?>
+?sort_date=<?php echo !$_smarty_tpl->getValue('data')['sortDate'];?>
 &sort_views=<?php echo $_smarty_tpl->getValue('data')['sortViews'];?>
 ">
 					sort by Date
@@ -173,27 +175,6 @@ $_smarty_tpl->tpl_vars['p']->first = $_smarty_tpl->tpl_vars['p']->iteration === 
 		</ul>
 	</div>
 
-	<?php echo '<script'; ?>
->
-		$(function() {
-			const urlParams = new URLSearchParams(window.location.search);
-			const sortViews = urlParams.get('sort_views');
-			const sortDate = urlParams.get('sort_date');
-
-			// Sorted sign
-			if(sortViews==='1') {
-				$('#articles-sort-by-views a').css('text-decoration', 'underline');
-			} else {
-				$('#articles-sort-by-views a').css('text-decoration', 'none');
-			}
-			if(sortDate==='1') {
-				$('#articles-sort-by-date a').css('text-decoration', 'underline');
-			} else {
-				$('#articles-sort-by-date a').css('text-decoration', 'none');
-			}
-		});
-	<?php echo '</script'; ?>
->
 <?php
 }
 }
