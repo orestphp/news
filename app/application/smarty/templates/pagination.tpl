@@ -1,4 +1,4 @@
-<div class="pagination-container content">
+<div class="pagination-container">
     <ul class="pagination">
 
         {if $data.currentPage > 1}
