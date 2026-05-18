@@ -9,6 +9,15 @@
       * Smarty
 
 ## Project Installation
+Make sure "./docker/nginx" path is correct:
+```
+server {
+  listen 80;
+  server_name localhost;
+  root /var/www/crm/app;
+  ...
+```
+
 
 After 'git clone', inside repo:
 ```
