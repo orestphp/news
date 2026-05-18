@@ -26,7 +26,7 @@ RUN docker-php-ext-install intl pdo_mysql zip bcmath gd unzip
 COPY php.ini /usr/local/etc/php/
 
 # Set permissions
-RUN chown -R www-data:www-data /news
+RUN chown -R www-data:www-data /app
 
 # Config Smaty templates
 #RUN chown www-data:www-data /var/www/news/app/application/smarty/templates_c
