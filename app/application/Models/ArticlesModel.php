@@ -32,11 +32,11 @@ class ArticlesModel extends Model
         $offset = ($page - 1) * $limit;
 
         // Sort articles
-        if($sortDate===1 && $sortViews===1)
+        if ($sortDate===1 && $sortViews===1)
             $order = 'a.created_at, a.views_count DESC';
         else if (!$sortDate && !$sortViews)
             $order = 'a.created_at DESC';
-        else if(!$sortDate && $sortViews)
+        else if (!$sortDate && $sortViews)
             $order = 'a.views_count DESC';
         else
             $order = 'a.created_at ASC';
@@ -106,16 +106,16 @@ class ArticlesModel extends Model
         $offset = ($page - 1) * static::$pageLimit;
 
         // Sort articles
-        if($sortDate===1 && $sortViews===1)
+        if ($sortDate===1 && $sortViews===1)
             $order = 'a.created_at, a.views_count DESC';
         else if (!$sortDate && !$sortViews)
             $order = 'a.created_at DESC';
-        else if(!$sortDate && $sortViews)
+        else if (!$sortDate && $sortViews)
             $order = 'a.views_count DESC';
         else
             $order = 'a.created_at ASC';
 
-        if(is_array($categoryId)) {
+        if (is_array($categoryId)) {
             $sql = "SELECT 
                         c.id AS category_id, 
                         c.name AS category_name, 

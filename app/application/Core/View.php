@@ -17,7 +17,7 @@ class View
 	function render($contentView, $data = [], $pages = [])
 	{
 		// Convert array elements to variables
-		if(is_array($data)) {
+		if (is_array($data)) {
 			extract($data);
 		}
 

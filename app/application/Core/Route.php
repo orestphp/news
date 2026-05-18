@@ -30,9 +30,9 @@ abstract class Route
 		$controllerName = !empty($routes[1]) ? $routes[1] : $controllerName;
 		// action
         $actionName = !empty($routes[2]) ? ucfirst($routes[2]) : $actionName;
-        if(str_contains($actionName, '-')) {
+        if (str_contains($actionName, '-')) {
             $aActionName = explode('-', $actionName);
-            if(sizeof($aActionName) === 2)
+            if (sizeof($aActionName) === 2)
                 $actionName = ucfirst($aActionName[0]) . ucfirst($aActionName[1]);
         }
         $actionName = 'action' . $actionName;
@@ -47,7 +47,7 @@ abstract class Route
         $controller = class_exists($ControllerClass) ? new $ControllerClass($model) : new MainController($model);
 
         // Check action
-		if(method_exists($controller, $actionName))
+		if (method_exists($controller, $actionName))
 		{
 			// Call controller & action
 			$controller->$actionName($modelId);
@@ -71,9 +71,9 @@ abstract class Route
 	static function inputPost($paramName = '')
 	{
         $postValue = null;
-        if(!empty($paramName) && isset($_POST[$paramName])) {
+        if (!empty($paramName) && isset($_POST[$paramName])) {
             $postValue = trim(htmlspecialchars($_POST[$paramName], ENT_QUOTES, 'UTF-8'));
-            if($paramName === "email")
+            if ($paramName === "email")
                 $postValue = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
         }
 		return  $postValue;
@@ -82,7 +82,7 @@ abstract class Route
 	static function inputGet($paramName = '')
 	{
         $getValue = null;
-        if(!empty($paramName) && isset($_GET[$paramName])) {
+        if (!empty($paramName) && isset($_GET[$paramName])) {
             $getValue = trim(htmlspecialchars($_GET[$paramName], ENT_QUOTES, 'UTF-8'));
         }
         return  $getValue;

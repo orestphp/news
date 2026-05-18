@@ -76,7 +76,7 @@ class NewsController extends Controller
         $categoryArticles = ArticlesModel::getCategoryArticles($categoryId, $sortDate, $sortViews);
 
         // 404 Page Not Found
-        if(!$currentCategory || !$countArticles || !$categoryArticles) {
+        if (!$currentCategory || !$countArticles || !$categoryArticles) {
             Route::errorPage404();
         }
 
@@ -110,12 +110,12 @@ class NewsController extends Controller
         foreach ($articleTags as $tag) {
             $categoryIds[] = $tag['id'];
         }
-        if($articleTags) {
+        if ($articleTags) {
             $categoryArticles = ArticlesModel::getCategoryArticles($categoryIds);
         }
 
         // 404 Page Not Found
-        if(!$article || !$articleTags) {
+        if (!$article || !$articleTags) {
             Route::errorPage404();
         }
 

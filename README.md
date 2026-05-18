@@ -50,9 +50,9 @@ http://127.0.0.1:8081/
 
 ## Development Notes
   - Project architecture comes with Docker environment and PHP Application.
-  - PHP Application is based on MVC pattern, using Core/Route, Core/ActiveRecord, Model, View, Controller - 
+  - PHP Application is based on MVC pattern, using "Core/Route, Core/ActiveRecord, Model, View, Controller" - 
     and PSR-4: Autoloader
-  - Core/Route is used to route incoming request to controller.
+  - Core/Route is used to route incoming request to controller. (TODO: move validation to Core/Request)
   - default "controller/action" - "main/index"
   - Core/ActiveRecord is used to interact with database.
   - Model is used to define database table structure and query.
