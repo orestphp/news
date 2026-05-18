@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y \
     rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
-RUN docker-php-ext-install intl pdo_mysql zip bcmath gd unzip
+RUN docker-php-ext-install intl pdo_mysql zip bcmath gd
 
 COPY php.ini /usr/local/etc/php/
 
