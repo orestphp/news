@@ -19,7 +19,28 @@ server {
   root /var/www/crm/app;
   ...
 ```
+and in "docker-compose.yml" volumes:
+ ```
+services:
+  # php (app)
+  app:
+    build:
+      context: ./docker/php
+    volumes:
+      - ./app:/var/www/news/app
+    networks:
+      - news-network
+
+  # nginx
+  nginx:
+    build:
+      context: ./docker/nginx
+    ports:
+      - '8080:80'
+    volumes:
+      - ./app:/var/www/news/app    
 ```
+
 $ make init
 ```
 ```
