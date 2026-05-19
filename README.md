@@ -9,7 +9,9 @@
       * Smarty
 
 ## Project Installation
-Make sure "./docker/nginx" path is correct:
+After 'git clone':
+
+Make sure "./docker/nginx/default.conf" path is correct:
 ```
 server {
   listen 80;
@@ -17,9 +19,6 @@ server {
   root /var/www/crm/app;
   ...
 ```
-
-
-After 'git clone', inside repo:
 ```
 $ make init
 ```
